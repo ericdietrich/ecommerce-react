@@ -1,10 +1,13 @@
 import React from 'react'
-import Products from './components/Products/Products'
+import HeaderComponent from './components/Header/Header'
+import ProductsComponent from './components/Products/Products'
+import './styles/global.css'
 
 const App = () => {
     return (
         <div>
-            <Products/>
+            <HeaderComponent/>
+            <ProductsComponent/>
         </div>
     )
 }

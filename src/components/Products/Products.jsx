@@ -1,20 +1,31 @@
 import React from 'react';
 import products from '../../products.json';
-import Product from '../Product/Product';
+import { Container } from '../../styles/container';
+import ProductComponent  from '../Product/Product';
+import styled from 'styled-components';
 
-const Products = () => {
+const ProductsComponent = () => {
     return (
-        <div>
-            {
-                products.map((product) => {
-                    return (
-                        <Product product={product} />
-                    )
-                    
-                })
-            }
-        </div>
+        <Container>
+            <Products>
+               {
+                    products.map((product) => {
+                        return (
+                            <ProductComponent product={product} />
+                        )
+                        
+                    })
+                } 
+            </Products>
+            
+        </Container>
     )
 }
 
-export default Products;
+export default ProductsComponent;
+
+const Products = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+`;
