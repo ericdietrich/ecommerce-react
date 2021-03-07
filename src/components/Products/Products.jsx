@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import products from '../../products.json';
 import { Container } from '../../styles/container';
 import ProductComponent  from '../Product/Product';
 import styled from 'styled-components';
@@ -8,13 +7,18 @@ import {GlobalContext} from '../../GlobalContext';
 const ProductsComponent = () => {
     const global = useContext(GlobalContext);
 
+
+
+    console.log(global.products);
+
     return (
         <Container>
             <Products>
-               {global &&
-                    global.produtos.map((product) => {
+               {global
+                    &&
+                    global.products.map((product, index) => {
                         return (
-                            <ProductComponent product={product} key={product.id} />
+                            <ProductComponent product={product} index={index} key={product.id} />
                         )
                         
                     })

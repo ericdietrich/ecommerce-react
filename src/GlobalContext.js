@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
-import produtosJson from './products.json';
+import React, { useEffect, useState } from 'react';
+import produtsJson from './products.json';
 
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({children}) => {
-    const [produtos, setProdutos] = useState(produtosJson);
+    const [products, setProducts] = useState(produtsJson);
     
-    function imprimir() {
-        console.log('imprimir');
+    useEffect(() => {
+        products.map((product) => {
+            product.cart = 0;
+            setProducts()
+        })
+    }, []);
+
+
+    function addToCart( id ) {
+        let index = products.findIndex(product => product.id === id );
+        products[index].cart++;
+        console.log(products[index].cart);
     }
-    
+
 
     return (
-        <GlobalContext.Provider value={{produtos, setProdutos, imprimir}}>
+        <GlobalContext.Provider value={{products, setProducts, addToCart}}>
             {children}
         </GlobalContext.Provider>
     );
