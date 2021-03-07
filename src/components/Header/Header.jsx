@@ -16,9 +16,8 @@ const HeaderComponent = () => {
                     <span style={{marginLeft: 20}}>E-Commerce Supera</span>    
                 </div>
                <div className={`cart ${cartSelected ? 'selected' : ''}`} onClick={() => {setCartSelected(!cartSelected)}}>            
-                    <img src={cartIcon} height={30} width={30} /> 
+                    <img src={cartIcon} alt='carrinho' height={30} width={30} /> 
                </div>
-                
             </Container>
         </Header>
     )

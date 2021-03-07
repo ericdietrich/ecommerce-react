@@ -1,14 +1,15 @@
-import React from 'react'
-import HeaderComponent from './components/Header/Header'
-import ProductsComponent from './components/Products/Products'
-import './styles/global.css'
+import React from 'react';
+import HeaderComponent from './components/Header/Header';
+import ProductsComponent from './components/Products/Products';
+import './styles/global.css';
+import { GlobalStorage } from './GlobalContext';
 
 const App = () => {
     return (
-        <div>
+        <GlobalStorage>
             <HeaderComponent/>
             <ProductsComponent/>
-        </div>
+        </GlobalStorage>
     )
 }
 

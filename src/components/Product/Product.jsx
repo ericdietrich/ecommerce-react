@@ -7,11 +7,10 @@ import { faPlusCircle, faMinusCircle} from '@fortawesome/free-solid-svg-icons';
 const ProductComponent = ({product}) => {
     let image = `../../assets/${product.image}`;
     
-    
     return (
         <Product>
             <h1>{product.name}</h1>
-            <img src={`../../assets/${product.image}`} alt='Jogo' />
+            <img src={`${image}`} alt='Jogo' />
             <img src={imagem} alt='Jogo' />
 
             <div style={{display: 'flex', justifyContent: 'space-between'}} className='info' >
