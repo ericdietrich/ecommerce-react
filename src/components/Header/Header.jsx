@@ -5,7 +5,7 @@ import cartIcon from '../../assets/cart-icon.svg';
 
 
 const HeaderComponent = () => {
-    const logoHeader = 'https://source.unsplash.com/featured/?logo';
+    const logoHeader = 'https://source.unsplash.com/featured/?video-game';
     const [cartSelected, setCartSelected] = useState(false);
 
     return (
@@ -26,6 +26,8 @@ const HeaderComponent = () => {
 export default HeaderComponent;
 
 const Header = styled.header`
+    position: fixed;
+    width: 100vw;
     margin-bottom: 60px;
     background: var(--color-primary-darker);
     color: var(--color-title-in-primary);

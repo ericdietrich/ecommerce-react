@@ -7,10 +7,6 @@ import {GlobalContext} from '../../GlobalContext';
 const ProductsComponent = () => {
     const global = useContext(GlobalContext);
 
-
-
-    console.log(global.products);
-
     return (
         <Container>
             <Products>

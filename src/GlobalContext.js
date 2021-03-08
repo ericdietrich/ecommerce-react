@@ -7,22 +7,33 @@ export const GlobalStorage = ({children}) => {
     const [products, setProducts] = useState(produtsJson);
     
     useEffect(() => {
-        products.map((product) => {
+        products.map((product, index) => {
             product.cart = 0;
-            setProducts()
-        })
+            let newArr = [...products];
+            newArr[index] = {...product, cart: 0}
+            setProducts(newArr);
+        });
     }, []);
-
 
     function addToCart( id ) {
         let index = products.findIndex(product => product.id === id );
-        products[index].cart++;
-        console.log(products[index].cart);
+        let newArr = [...products];
+        newArr[index].cart++;
+        setProducts(newArr);
+    }
+
+    function removeFromCart ( id ) {
+        let index = products.findIndex(product => product.id === id );
+        if (products[index].cart !== 0) {
+            let newArr = [...products];
+            newArr[index].cart--;
+            setProducts(newArr);
+        }
     }
 
 
     return (
-        <GlobalContext.Provider value={{products, setProducts, addToCart}}>
+        <GlobalContext.Provider value={{products, addToCart, removeFromCart}}>
             {children}
         </GlobalContext.Provider>
     );

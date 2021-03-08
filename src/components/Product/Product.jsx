@@ -8,8 +8,6 @@ import {GlobalContext} from '../../GlobalContext';
 const ProductComponent = ({product, index}) => {
     const global = useContext(GlobalContext);
     let image = `../../assets/${product.image}`;
-
-    console.log(global.products[index].cart);
     
     return (
         <Product>
@@ -18,15 +16,20 @@ const ProductComponent = ({product, index}) => {
             <img src={imagem} alt='Jogo' />
 
             <div style={{display: 'flex', justifyContent: 'space-between'}} className='info' >
-                <span>Preço: R$ {global.products[index].price.toString().replace('.', ',')}</span>
+                <span>Preço: R$ {global.products[index].price.toFixed(2).toString().replace('.', ',')}</span>
                 <div >
                     <FontAwesomeIcon 
                         icon={faMinusCircle} 
                         height={18}
                         style={{cursor: 'pointer'}}
+                        onClick={() => {global.removeFromCart(product.id)}}
                         
                     />
-                    <span className='add'>{global.products[index].cart}</span>  
+                    <span 
+                        style={{padding: '0 5px'}}
+                    >
+                        {global.products[index].cart ? global.products[index].cart : '0' }
+                    </span>  
                     <FontAwesomeIcon 
                         icon={faPlusCircle} 
                         height={18}
@@ -49,6 +52,7 @@ const Product = styled.div`
     padding: 10px;
     border-radius: 15px 5px;
     border: 3px solid var(--color-secundary);
+    user-select: none;
     &:hover {
         border: 3px solid var(--color-primary-lighter);
     }
@@ -60,9 +64,5 @@ const Product = styled.div`
 
     .info {
         margin-top: 20px;
-    }
-
-    .add {
-        padding: 0 5px;
     }
 `;
