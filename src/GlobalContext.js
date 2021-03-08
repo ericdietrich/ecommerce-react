@@ -5,6 +5,8 @@ export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({children}) => {
     const [products, setProducts] = useState(produtsJson);
+    const [showCart, setShowCart] = useState(false);
+    const [emptyCart, setEmptyCart] = useState(true);
     
     useEffect(() => {
         products.map((product, index) => {
@@ -14,6 +16,16 @@ export const GlobalStorage = ({children}) => {
             setProducts(newArr);
         });
     }, []);
+
+    useEffect(() => {
+        setEmptyCart(true);
+        products.map((product) => {
+            if (product.cart !== 0) {
+               setEmptyCart(false);
+               return;
+           } 
+        });
+    }, [products])
 
     function addToCart( id ) {
         let index = products.findIndex(product => product.id === id );
@@ -32,8 +44,9 @@ export const GlobalStorage = ({children}) => {
     }
 
 
+
     return (
-        <GlobalContext.Provider value={{products, addToCart, removeFromCart}}>
+        <GlobalContext.Provider value={{products, addToCart, removeFromCart, showCart, setShowCart, emptyCart }}>
             {children}
         </GlobalContext.Provider>
     );

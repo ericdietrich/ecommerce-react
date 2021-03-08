@@ -7,13 +7,12 @@ import {GlobalContext} from '../../GlobalContext';
 
 const ProductComponent = ({product, index}) => {
     const global = useContext(GlobalContext);
-    let image = `../../assets/${product.image}`;
+    let imageSource = require(`../../assets/${product.image}`);
     
     return (
         <Product>
             <h1>{global.products[index].name}</h1>
-            <img src={`${image}`} alt='Jogo' />
-            <img src={imagem} alt='Jogo' />
+            <img src={imageSource.default} alt='Jogo' />
 
             <div style={{display: 'flex', justifyContent: 'space-between'}} className='info' >
                 <span>Preço: R$ {global.products[index].price.toFixed(2).toString().replace('.', ',')}</span>

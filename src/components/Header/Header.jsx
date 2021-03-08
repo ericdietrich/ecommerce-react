@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import styled from 'styled-components';
 import { Container } from '../../styles/container';
 import cartIcon from '../../assets/cart-icon.svg';
+import {GlobalContext} from '../../GlobalContext';
 
 
 const HeaderComponent = () => {
+    const global = useContext(GlobalContext);
     const logoHeader = 'https://source.unsplash.com/featured/?video-game';
     const [cartSelected, setCartSelected] = useState(false);
 
@@ -15,8 +17,14 @@ const HeaderComponent = () => {
                     <img src={logoHeader} alt='logo' className='logo' />
                     <span style={{marginLeft: 20}}>E-Commerce Supera</span>    
                 </div>
-               <div className={`cart ${cartSelected ? 'selected' : ''}`} onClick={() => {setCartSelected(!cartSelected)}}>            
-                    <img src={cartIcon} alt='carrinho' height={30} width={30} /> 
+               <div className={`cart ${global.showCart ? 'selected' : ''}`} onClick={() => {global.setShowCart(!global.showCart)}}>            
+                    <img 
+                        src={cartIcon} 
+                        alt='carrinho' 
+                        height={30} 
+                        width={30} 
+                        onClick={() => {global.setShowCart(!global.showCart)}}
+                    /> 
                </div>
             </Container>
         </Header>

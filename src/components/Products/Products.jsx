@@ -28,6 +28,7 @@ const ProductsComponent = () => {
 export default ProductsComponent;
 
 const Products = styled.div`
+    margin-top: 120px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
