@@ -11,11 +11,11 @@ const ProductComponent = ({product, index}) => {
     
     return (
         <Product>
-            <h1>{global.products[index].name}</h1>
+            <h1>{global.sortedProducts[index].name}</h1>
             <img src={imageSource.default} alt='Jogo' />
 
             <div style={{display: 'flex', justifyContent: 'space-between'}} className='info' >
-                <span>Preço: R$ {global.products[index].price.toFixed(2).toString().replace('.', ',')}</span>
+                <span>Preço: R$ {global.sortedProducts[index].price.toFixed(2).toString().replace('.', ',')}</span>
                 <div >
                     <FontAwesomeIcon 
                         icon={faMinusCircle} 
@@ -27,7 +27,7 @@ const ProductComponent = ({product, index}) => {
                     <span 
                         style={{padding: '0 5px'}}
                     >
-                        {global.products[index].cart ? global.products[index].cart : '0' }
+                        {global.sortedProducts[index].cart ? global.sortedProducts[index].cart : '0' }
                     </span>  
                     <FontAwesomeIcon 
                         icon={faPlusCircle} 
@@ -57,11 +57,24 @@ const Product = styled.div`
     }
 
     h1 {
-        font-size: 2rem;
+        font-size: 18px;
         height: 46px;
     }
 
     .info {
         margin-top: 20px;
     }
+
+    @media (max-width: 1160px) {
+        width: 30%;
+    }
+
+    @media (max-width: 780px) {
+        width: 40%;
+    }
+
+    @media (max-width: 600px) {
+        width: 80%;
+    }
+
 `;

@@ -154,6 +154,10 @@ const Cart = styled.div`
         visibility: hidden;
         opacity: 0;
     }
+
+    @media (max-width: 600px) {
+        width: calc(100vw);
+    } 
 `;
 
 const ProductCart = styled.div`

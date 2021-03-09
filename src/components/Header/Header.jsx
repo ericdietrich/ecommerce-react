@@ -15,7 +15,7 @@ const HeaderComponent = () => {
             <Container style={{justifyContent: 'space-between', alignItems: 'center'}}>
                 <div>
                     <img src={logoHeader} alt='logo' className='logo' />
-                    <span style={{marginLeft: 20}}>E-Commerce Supera</span>    
+                    <span className='title' style={{marginLeft: 20}}>E-Commerce Supera</span>    
                 </div>
                <div className={`cart ${global.showCart ? 'selected' : ''}`} onClick={() => {global.setShowCart(!global.showCart)}}>            
                     <img 
@@ -46,6 +46,10 @@ const Header = styled.header`
         align-items: center;
     }
 
+    .title {
+        font-size: 38px;
+    }
+
     .logo {
         height: 80px;
         width: 80px;
@@ -65,5 +69,12 @@ const Header = styled.header`
             background: #ee4455;
             box-shadow: inset 0 0 5px #000000;
         }
+    }
+
+    @media (max-width: 600px) {
+        .title {
+            font-size: 28px;
+        }
+        
     }
 `;
